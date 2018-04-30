@@ -1,4 +1,4 @@
-# Katas in Scala
+# Katas in Scala [![Build Status](https://travis-ci.org/amaalali/katas-scala.svg?branch=master)](https://travis-ci.org/amaalali/katas-scala)
 Misc katas done Scala, using ScalaTest as the testing framwork.
 
 ## Katas List
