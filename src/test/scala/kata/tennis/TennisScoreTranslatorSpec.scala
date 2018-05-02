@@ -7,9 +7,5 @@ class TennisScoreTranslatorSpec extends WordSpec with Matchers {
     "= 0" in {
       TennisScoreTranslator(0) should equal ("love")
     }
-
-    "= 0" in {
-      TennisScoreTranslator(0) should equal ("love")
-    }
   }
 }

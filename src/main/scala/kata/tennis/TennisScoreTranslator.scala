@@ -1,9 +1,12 @@
 package kata.tennis
 
 object TennisScoreTranslator {
-  def apply(score: Int): String = {
-    score match {
-      case x if x==0 => "love"
-    }
-  }
+  private val POINT_MAP = Map(
+    0 -> "love",
+    1 -> "fifteen",
+    2 -> "thirty",
+    3 -> "forty"
+  )
+
+  def apply(score: Int): String = POINT_MAP(score)
 }
