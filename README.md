@@ -2,17 +2,18 @@
 Misc katas done Scala, using ScalaTest as the testing framwork.
 
 ## Katas List
-- [x] Fizzbuzz Kata (package name `fizzbuzz`)
-- [ ] Tennis Kata (package name `tennis`)
+- [x] Fizzbuzz Kata (package name `kata.fizzbuzz`)
+- [x] Tennis Kata (package name `kata.tennis`)
+- [x] Newton's method (package name `numerical`)
 
 ## Test
 Run test using `sbt test`
 
-Run test for single kata project using
+Run all tests using
 ```
-sbt testOnly kata.<kata package name>
+sbt test
 ```
 or
 ```
-sbt ~testOnly kata.<kata package name>
+sbt ~test
 ```
