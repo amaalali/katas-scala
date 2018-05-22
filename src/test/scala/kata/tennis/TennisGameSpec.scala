@@ -3,24 +3,25 @@ package kata.tennis
 import org.scalatest.{FlatSpec, Matchers}
 
 class TennisGameSpec extends FlatSpec with Matchers {
-
   "Points" can "be added to each player" in {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
-    val game = new TennisGame(victor, sarah)
-    victor.winBall
-    victor.winBall
-    sarah.winBall
+    val game = new TennisGame(p1 = victor, p2 = sarah)
 
-    victor.winBall
-    victor.score should be (3)
-    sarah.score should be (1)
+    game.winBall(victor)
+    game.winBall(victor)
+    game.winBall(sarah)
+    game.winBall(victor)
+
+    game.score_p1 should be (3)
+    game.score_p2 should be (1)
   }
 
   "Love" should "be description for score 0" in {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
-    val game = new TennisGame(victor, sarah)
+    val game = new TennisGame(p1 = victor, p2 = sarah)
+
     game.score should be ("love, love")
   }
 
@@ -28,7 +29,9 @@ class TennisGameSpec extends FlatSpec with Matchers {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
     val game = new TennisGame(victor, sarah)
-    sarah.winBall
+
+    game.winBall(sarah)
+
     game.score should be ("love, fifteen")
   }
 
@@ -36,9 +39,11 @@ class TennisGameSpec extends FlatSpec with Matchers {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
     val game = new TennisGame(victor, sarah)
-    victor.winBall
-    victor.winBall
-    sarah.winBall
+
+    game.winBall(victor)
+    game.winBall(victor)
+    game.winBall(sarah)
+
     game.score should be ("thirty, fifteen")
   }
 
@@ -46,7 +51,11 @@ class TennisGameSpec extends FlatSpec with Matchers {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
     val game = new TennisGame(victor, sarah)
-    (1 to 3).foreach(x => victor.winBall)
+
+    game.winBall(victor)
+    game.winBall(victor)
+    game.winBall(victor)
+
     game.score should be ("forty, love")
   }
 
@@ -54,8 +63,10 @@ class TennisGameSpec extends FlatSpec with Matchers {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
     val game = new TennisGame(victor, sarah)
-    (1 to 3).foreach(x => victor.winBall)
-    (1 to 4).foreach(x => sarah.winBall)
+
+    for ( _ <- 1 to 3) { game.winBall(victor) }
+    for ( _ <- 1 to 4) { game.winBall(sarah) }
+
     game.score should be ("advantage Sarah")
   }
 
@@ -63,12 +74,14 @@ class TennisGameSpec extends FlatSpec with Matchers {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
     val game = new TennisGame(victor, sarah)
-    (1 to 3).foreach(x => victor.winBall)
-    (1 to 3).foreach(x => sarah.winBall)
+
+    (1 to 3).foreach(_ => game.winBall(victor))
+    (1 to 3).foreach(_ => game.winBall(sarah))
+
     game.score should be ("deuce")
-    victor.winBall
+    game.winBall(victor)
     game.score should not be "deuce"
-    sarah.winBall
+    game.winBall(sarah)
     game.score should be ("deuce")
   }
 
@@ -76,11 +89,10 @@ class TennisGameSpec extends FlatSpec with Matchers {
     val victor = Player("Victor")
     val sarah = Player("Sarah")
     val game = new TennisGame(victor, sarah)
-    (1 to 4).foreach(x => victor.winBall)
-    (1 to 3).foreach(x => sarah.winBall)
-    game.score should not be "Victor won"
-    game.score should not be "Sarah won"
-    victor.winBall
-    game.score should be ("Victor won")
+
+    (1 to 3).foreach(_ => game.winBall(victor))
+    (1 to 5).foreach(_ => game.winBall(sarah))
+
+    game.score should be ("Sarah won")
   }
 }
