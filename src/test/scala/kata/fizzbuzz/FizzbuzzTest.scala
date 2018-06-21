@@ -1,30 +1,30 @@
 package kata.fizzbuzz
 
-import org.scalatest.FlatSpec
+import org.scalatest.FunSuite
 
-class FizzBuzzSpec extends FlatSpec {
-  "FizzBuzz" should "return fizz if the number is dividable by 3" in {
+class FizzBuzzSpec extends FunSuite {
+  test("return fizz if the number is dividable by 3") {
     assert(FizzBuzz(3) == "fizz")
     assert(FizzBuzz(6) == "fizz")
   }
- 
-  it should "return buzz if the number is dividable by 5" in {
+
+  test("return buzz if the number is dividable by 5") {
     assert(FizzBuzz(5) == "buzz")
     assert(FizzBuzz(10) == "buzz")
   }
- 
-  it should "return fizzbuzz if the number is dividable by 15" in {
-   assert(FizzBuzz(15) == "fizzbuzz")
-   assert(FizzBuzz(30) == "fizzbuzz")
+
+  test("return fizzbuzz if the number is dividable by 15") {
+    assert(FizzBuzz(15) == "fizzbuzz")
+    assert(FizzBuzz(30) == "fizzbuzz")
   }
 
-  it should "return seven if the number is 7" in {
+  test("return seven if the number is 7") {
     assert(FizzBuzz(7) == "seven")
   }
 
-  it should "return the same number if no other requirement is fulfilled" in {
-   assert(FizzBuzz(1) == "1")
-   assert(FizzBuzz(2) == "2")
-   assert(FizzBuzz(4) == "4")
+  test("return the same number if no other requirement is fulfilled") {
+    assert(FizzBuzz(1) == "1")
+    assert(FizzBuzz(2) == "2")
+    assert(FizzBuzz(4) == "4")
   }
 }
