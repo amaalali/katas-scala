@@ -19,6 +19,10 @@ Misc katas done Scala, using ScalaTest as the testing framwork.
         Partition a sequence of words into groups that are rotations of each other.
         eg  "abc", "bca" and "cab" are rotations
             "abc" and "bac" are NOT rotations
+            
+- [ ] Roman numeral converter
+       - [ ] Numbers -> Roman numerals
+       - [x] Roman numerals -> Numbers
 
 ## Test
 Run test using `sbt test`
